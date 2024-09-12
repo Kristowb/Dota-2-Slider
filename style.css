@@ -267,7 +267,7 @@ header nav a {
 }
 
 .slider.next .thumbnail .item:nth-last-child(1) {
-  width: 0px;
+  width: 0;
   overflow: hidden;
   opacity: 0;
   animation: showThumbnail 0.5s linear 1 forwards;
@@ -294,10 +294,10 @@ header nav a {
 /* Action Previous */
 
 .slider.prev .list .item:nth-child(2) {
-  z-index: 1;
+  z-index: 2;
 }
 
-.slider.prev .list .item:nth-child(2) {
+.slider.prev .list .item:nth-child(2) > img {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -311,5 +311,67 @@ header nav a {
     border-radius: 15px;
     left: 50%;
     bottom: 50px;
+  }
+}
+
+.slider.prev .thumbnail .item:nth-child(1) {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  animation: showThumbnail 0.5s linear forwards;
+}
+
+.slider.prev .list .item:nth-child(2) .title,
+.slider.prev .list .item:nth-child(2) .name,
+.slider.prev .list .item:nth-child(2) figure,
+.slider.prev .list .item:nth-child(2) .desc,
+.slider.prev .list .item:nth-child(2) .more {
+  animation: hideDetail 0.5s linear forwards;
+}
+
+@keyframes hideDetail {
+  to {
+    transform: translateY(-150px);
+    filter: blur(20%);
+    opacity: 0;
+  }
+}
+
+.slider.next .arrows button,
+.slider.prev .arrows button {
+  pointer-events: none;
+}
+
+.loading-bar {
+  width: 0%;
+  height: 5px;
+  background-color: #f80;
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+.slider.next .loading-bar,
+.slider.prev .loading-bar {
+  width: 100%;
+  animation: loadingTime 2s linear forwards;
+}
+
+@keyframes loadingTime {
+  to {
+    width: 0%;
+  }
+}
+
+/* Mobile Breakpoiint */
+@media screen and (max-width: 678px) {
+  .slider .list .item .detail .name {
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+  }
+  .slider .list .item .detail .desc {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
   }
 }
